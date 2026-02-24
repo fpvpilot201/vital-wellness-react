@@ -10,6 +10,30 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: '/treatments/alcohol-addiction',
+        destination: '/alcohol-rehab',
+        permanent: true,
+      },
+      {
+        source: '/treatments/alcohol-addiction/',
+        destination: '/alcohol-rehab',
+        permanent: true,
+      },
+      {
+        source: '/treatments/drug-addiction',
+        destination: '/drug-rehab',
+        permanent: true,
+      },
+      {
+        source: '/treatments/drug-addiction/',
+        destination: '/drug-rehab',
+        permanent: true,
+      }
+    ];
+  },
   async headers() {
     return [
       {

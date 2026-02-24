@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "iVital Wellness - Addiction Treatment Center | Drug & Alcohol Rehab Santa Clarita",
+  title: "Home - iVital Wellness - Addiction Treatment Center in Santa Clarita",
   description:
-    "iVital Wellness is a premier addiction treatment center in Santa Clarita, CA offering medical detox, residential treatment, dual diagnosis care, and luxury rehab programs. Call (866) 764-5152.",
+    "iVital Wellness Center is dedicated to assisting you, offering premier addiction treatment services to support your recovery or that of a loved one. Our compassionate team is dedicated to guiding you toward a healthy, fulfilling life.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "iVital Wellness - Addiction Treatment Center | Drug & Alcohol Rehab Santa Clarita",
-    description: "Premier addiction treatment center in Santa Clarita, CA. Medical detox, residential treatment, dual diagnosis care. Available 24/7.",
+    title: "Home - iVital Wellness - Addiction Treatment Center in Santa Clarita",
+    description: "iVital Wellness Center is dedicated to assisting you, offering premier addiction treatment services to support your recovery or that of a loved one. Our compassionate team is dedicated to guiding you toward a healthy, fulfilling life.",
     url: "/",
     images: [{ url: "/photos/iVital-Wellness-House.jpg", width: 1200, height: 630, alt: "iVital Wellness Treatment Center" }],
   },

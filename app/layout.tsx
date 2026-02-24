@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -16,6 +17,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  verification: {
+    google: "GYWD36nzRWOa51TIlhIx2hj-UcaOwf_U-YYAr7DAzXU",
+  },
   title: {
     default:
       "iVital Wellness - Addiction Treatment Center | Drug & Alcohol Rehab Santa Clarita",
@@ -113,6 +117,44 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Script id="ga-setup" strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-RD6W1RGFS8" />
+        <Script id="ga-config" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RD6W1RGFS8');
+          `}
+        </Script>
+        <Script id="gtm-setup-1" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TKPJH55B');
+          `}
+        </Script>
+        <Script id="gtm-setup-2" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MM5D885J');
+          `}
+        </Script>
+        <Script
+          src="https://cdn.userway.org/widget.js"
+          data-account="wtfVmFNygS"
+          strategy="lazyOnload"
+        />
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKPJH55B" height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
+        </noscript>
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM5D885J" height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
+        </noscript>
         <JsonLd />
         <Header />
         <main id="main-content">
