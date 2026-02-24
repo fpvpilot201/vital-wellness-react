@@ -20,33 +20,58 @@ const blogCSS = `
 .page-title { font-family: 'Playfair Display', serif; font-size: 48px; color: #6a7c64; margin-bottom: 15px; font-weight: 400; }
 .hero-divider { margin-bottom: 20px; }
 .page-subtitle { font-family: 'Lato', sans-serif; font-size: 16px; color: #666; letter-spacing: 1px; }
-.blog-container { width: 88%; max-width: 1300px; margin: 80px auto; }
+
+.blog-container { width: 88%; max-width: 1200px; margin: 80px auto; }
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.blog-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; display: flex; flex-direction: column; }
-.blog-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-.blog-img-box { height: 240px; width: 100%; overflow: hidden; }
-.blog-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+
+.blog-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; border: 1px solid #f0f0f0; }
+.blog-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); border-color: #e2e8f0; }
+
+.blog-img-box { position: relative; width: 100%; padding-top: 60%; overflow: hidden; background-color: #f8f9fa; }
+.blog-img-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .blog-card:hover .blog-img-box img { transform: scale(1.05); }
-.blog-content { padding: 30px 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-.blog-title { font-size: 20px; color: #2c3e29; line-height: 1.4; margin-bottom: 8px; font-weight: 500; font-family: 'Playfair Display', serif; }
-.blog-excerpt { font-family: 'Lato', sans-serif; font-size: 14px; color: #777; line-height: 1.6; margin-bottom: 16px; }
-.blog-meta { font-family: 'Lato', sans-serif; font-size: 12px; color: #aaa; margin-bottom: 12px; }
-.read-more { font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 700; color: #bd5656; text-transform: uppercase; letter-spacing: 1px; margin-top: auto; }
-.article-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff; z-index: 10001; overflow-y: auto; padding: 40px 0; opacity: 0; transition: opacity 0.5s ease; }
+
+.blog-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+.blog-title { font-size: 22px; color: #2d3748; line-height: 1.4; margin-bottom: 12px; font-weight: 600; font-family: 'Playfair Display', serif; transition: color 0.2s; }
+.blog-card:hover .blog-title { color: #6a7c64; }
+.blog-excerpt { font-family: 'Lato', sans-serif; font-size: 15px; color: #718096; line-height: 1.6; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+.blog-meta-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #edf2f7; padding-top: 20px; }
+.blog-meta { font-family: 'Lato', sans-serif; font-size: 13px; color: #a0aec0; display: flex; align-items: center; gap: 6px; }
+.read-more { font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 700; color: #6a7c64; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
+.blog-card:hover .read-more { transform: translateX(5px); }
+
+/* Article Overlay */
+.article-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #fff; z-index: 10001; overflow-y: auto; padding: 0; opacity: 0; transition: opacity 0.4s ease; }
 .article-overlay.active { display: block; opacity: 1; }
-.article-container { width: 90%; max-width: 900px; margin: 0 auto; position: relative; }
-.back-btn { position: fixed; top: 120px; left: 5%; background-color: #f4f4f4; color: #555; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.3s; z-index: 10002; border: 1px solid #ddd; }
-.back-btn:hover { background-color: #6a7c64; color: white; border-color: #6a7c64; }
-.article-header-img { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px; }
-.article-title { font-size: 42px; color: #2c3e29; margin-bottom: 15px; line-height: 1.2; text-align: center; font-family: 'Playfair Display', serif; }
-.article-meta-line { text-align: center; font-family: 'Lato', sans-serif; font-size: 14px; color: #999; margin-bottom: 30px; }
-.article-body { font-family: 'Lato', sans-serif; font-size: 18px; line-height: 1.8; color: #444; }
-.article-body p { margin-bottom: 25px; }
-.article-body h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-top: 40px; margin-bottom: 20px; color: #2c3e29; }
-.article-body ul, .article-body ol { margin-bottom: 25px; padding-left: 20px; }
-.article-body li { margin-bottom: 10px; }
-@media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } .back-btn { position: absolute; top: 0; left: 0; margin-bottom: 20px; } }
-@media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } .article-title { font-size: 32px; } .article-header-img { height: 250px; } }
+.article-overlay-inner { min-height: 100%; background-color: #fafaf9; padding-bottom: 80px; }
+
+.article-container { width: 100%; max-width: 800px; margin: 0 auto; background: #fff; padding: 50px 80px; box-shadow: 0 0 40px rgba(0,0,0,0.03); border-radius: 0 0 24px 24px; }
+.back-btn-container { max-width: 800px; margin: 0 auto; padding: 40px 0 20px; }
+.back-btn { background: transparent; color: #718096; border: none; font-family: 'Lato', sans-serif; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: color 0.2s; text-transform: uppercase; letter-spacing: 1px; }
+.back-btn:hover { color: #2d3748; }
+
+.article-header-img { width: 100%; height: 450px; object-fit: cover; border-radius: 16px; margin-bottom: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.article-title { font-size: 46px; color: #1a202c; margin-bottom: 20px; line-height: 1.2; font-family: 'Playfair Display', serif; }
+.article-meta-line { font-family: 'Lato', sans-serif; font-size: 15px; color: #718096; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; padding-bottom: 30px; border-bottom: 1px solid #e2e8f0; }
+
+.article-body { font-family: 'Lato', sans-serif; font-size: 18px; line-height: 1.8; color: #4a5568; }
+.article-body p { margin-bottom: 28px; }
+.article-body h3 { font-family: 'Playfair Display', serif; font-size: 28px; margin-top: 50px; margin-bottom: 20px; color: #2d3748; }
+.article-body ul, .article-body ol { margin-bottom: 30px; padding-left: 20px; }
+.article-body li { margin-bottom: 12px; }
+
+@media (max-width: 1024px) { 
+  .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; } 
+  .article-container { padding: 40px; }
+}
+@media (max-width: 768px) { 
+  .blog-grid { grid-template-columns: 1fr; } 
+  .article-title { font-size: 36px; } 
+  .article-header-img { height: 300px; margin-bottom: 30px; }
+  .article-container { padding: 30px 20px; }
+  .back-btn-container { padding: 30px 20px 10px; }
+}
 `;
 
 function normalizeImagePath(imagePath: string): string {
@@ -163,35 +188,41 @@ export default function BlogClient() {
         <div className={`article-overlay ${selectedPost ? "active" : ""}`}>
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              headline: selectedPost.title,
-              image: normalizeImagePath(selectedPost.image),
-              author: { "@type": "Organization", name: selectedPost.author || "iVital Wellness" },
-              publisher: { "@type": "Organization", name: "iVital Wellness", logo: { "@type": "ImageObject", url: "https://ivital-wellness-react.vercel.app/photos/logo.png" } },
-              datePublished: selectedPost.date || new Date().toISOString().split("T")[0],
-              description: selectedPost.excerpt || "",
-            }) }}
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                headline: selectedPost.title,
+                image: normalizeImagePath(selectedPost.image),
+                author: { "@type": "Organization", name: selectedPost.author || "iVital Wellness" },
+                publisher: { "@type": "Organization", name: "iVital Wellness", logo: { "@type": "ImageObject", url: "https://ivital-wellness-react.vercel.app/photos/logo.png" } },
+                datePublished: selectedPost.date || new Date().toISOString().split("T")[0],
+                description: selectedPost.excerpt || "",
+              })
+            }}
           />
-          <button className="back-btn" onClick={closeArticle}>
-            &larr; Back to Blog
-          </button>
-          <div className="article-container">
-            <img
-              src={normalizeImagePath(selectedPost.image)}
-              alt={selectedPost.title}
-              className="article-header-img"
-            />
-            <h1 className="article-title">{selectedPost.title}</h1>
-            {(selectedPost.date || selectedPost.author) && (
-              <p className="article-meta-line">
-                {selectedPost.date && <span>{selectedPost.date}</span>}
-                {selectedPost.date && selectedPost.author && <span> &middot; </span>}
-                {selectedPost.author && <span>{selectedPost.author}</span>}
-              </p>
-            )}
-            <div className="article-body" dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
+          <div className="article-overlay-inner">
+            <div className="back-btn-container">
+              <button className="back-btn" onClick={closeArticle}>
+                <i className="fas fa-arrow-left" style={{ marginRight: "4px" }} /> Back to Blog
+              </button>
+            </div>
+            <div className="article-container">
+              <h1 className="article-title">{selectedPost.title}</h1>
+              {(selectedPost.date || selectedPost.author) && (
+                <div className="article-meta-line">
+                  {selectedPost.date && <span><i className="far fa-calendar-alt" style={{ marginRight: "6px" }} />{selectedPost.date}</span>}
+                  {selectedPost.date && selectedPost.author && <span style={{ color: "#cbd5e1" }}>|</span>}
+                  {selectedPost.author && <span><i className="far fa-user" style={{ marginRight: "6px" }} />{selectedPost.author}</span>}
+                </div>
+              )}
+              <img
+                src={normalizeImagePath(selectedPost.image)}
+                alt={selectedPost.title}
+                className="article-header-img"
+              />
+              <div className="article-body" dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
+            </div>
           </div>
         </div>
       )}
