@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Native Injection: Forces trackers into raw View Source HTML */}
         <script dangerouslySetInnerHTML={{
@@ -68,7 +68,7 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-MM5D885J');
         `}} />
       </head>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKPJH55B" height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
         </noscript>
