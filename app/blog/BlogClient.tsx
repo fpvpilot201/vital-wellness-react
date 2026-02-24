@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface BlogPost {
   id: string;
@@ -21,24 +22,24 @@ const blogCSS = `
 .hero-divider { margin-bottom: 20px; }
 .page-subtitle { font-family: 'Lato', sans-serif; font-size: 16px; color: #666; letter-spacing: 1px; }
 
-.blog-container { width: 88%; max-width: 1200px; margin: 80px auto; }
+.blog-container { width: 88%; max-width: 1300px; margin: 80px auto; }
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 
-.blog-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; border: 1px solid #f0f0f0; }
-.blog-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); border-color: #e2e8f0; }
+.blog-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; display: flex; flex-direction: column; }
+.blog-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
 
-.blog-img-box { position: relative; width: 100%; padding-top: 60%; overflow: hidden; background-color: #f8f9fa; }
-.blog-img-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.blog-img-box { position: relative; width: 100%; padding-top: 60%; overflow: hidden; background-color: #f4f4f4; }
+.blog-img-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s; }
 .blog-card:hover .blog-img-box img { transform: scale(1.05); }
 
-.blog-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
-.blog-title { font-size: 22px; color: #2d3748; line-height: 1.4; margin-bottom: 12px; font-weight: 600; font-family: 'Playfair Display', serif; transition: color 0.2s; }
+.blog-content { padding: 30px 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.blog-title { font-size: 20px; color: #2c3e29; line-height: 1.4; margin-bottom: 8px; font-weight: 500; font-family: 'Playfair Display', serif; transition: color 0.2s; }
 .blog-card:hover .blog-title { color: #6a7c64; }
-.blog-excerpt { font-family: 'Lato', sans-serif; font-size: 15px; color: #718096; line-height: 1.6; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.blog-excerpt { font-family: 'Lato', sans-serif; font-size: 14px; color: #777; line-height: 1.6; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
 .blog-meta-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #edf2f7; padding-top: 20px; }
-.blog-meta { font-family: 'Lato', sans-serif; font-size: 13px; color: #a0aec0; display: flex; align-items: center; gap: 6px; }
-.read-more { font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 700; color: #6a7c64; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
+.blog-meta { font-family: 'Lato', sans-serif; font-size: 12px; color: #aaa; display: flex; align-items: center; gap: 6px; }
+.read-more { font-family: 'Lato', sans-serif; font-size: 12px; font-weight: 700; color: #bd5656; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 5px; transition: transform 0.2s; }
 .blog-card:hover .read-more { transform: translateX(5px); }
 
 /* Article Overlay */
@@ -162,70 +163,36 @@ export default function BlogClient() {
         ) : (
           <div className="blog-grid">
             {posts.map((post) => (
-              <article key={post.id} className="blog-card" onClick={() => openArticle(post)}>
+              <Link
+                href={`/blog/${post.slug || post.id}`}
+                key={post.id}
+                className="blog-card"
+                style={{ textDecoration: 'none' }}
+              >
                 <div className="blog-img-box">
                   <img src={normalizeImagePath(post.image)} alt={post.title} />
                 </div>
                 <div className="blog-content">
-                  <h2 className="blog-title">{post.title}</h2>
-                  {post.excerpt && <p className="blog-excerpt">{post.excerpt}</p>}
-                  {(post.date || post.author) && (
-                    <p className="blog-meta">
-                      {post.date && <span>{post.date}</span>}
-                      {post.date && post.author && <span> &middot; </span>}
-                      {post.author && <span>{post.author}</span>}
-                    </p>
-                  )}
-                  <span className="read-more">Read More &rarr;</span>
+                  <div>
+                    <h2 className="blog-title">{post.title}</h2>
+                    {post.excerpt && <p className="blog-excerpt">{post.excerpt}</p>}
+                  </div>
+                  <div className="blog-meta-wrapper">
+                    {(post.date || post.author) && (
+                      <div className="blog-meta">
+                        {post.date && <span><i className="far fa-calendar-alt" /> {post.date}</span>}
+                        {post.date && post.author && <span> &middot; </span>}
+                        {post.author && <span><i className="far fa-user" /> {post.author}</span>}
+                      </div>
+                    )}
+                    <span className="read-more">Read More <i className="fas fa-arrow-right" style={{ fontSize: 10, marginLeft: 2 }} /></span>
+                  </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         )}
       </div>
-
-      {selectedPost && (
-        <div className={`article-overlay ${selectedPost ? "active" : ""}`}>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "BlogPosting",
-                headline: selectedPost.title,
-                image: normalizeImagePath(selectedPost.image),
-                author: { "@type": "Organization", name: selectedPost.author || "iVital Wellness" },
-                publisher: { "@type": "Organization", name: "iVital Wellness", logo: { "@type": "ImageObject", url: "https://ivital-wellness-react.vercel.app/photos/logo.png" } },
-                datePublished: selectedPost.date || new Date().toISOString().split("T")[0],
-                description: selectedPost.excerpt || "",
-              })
-            }}
-          />
-          <div className="article-overlay-inner">
-            <div className="back-btn-container">
-              <button className="back-btn" onClick={closeArticle}>
-                <i className="fas fa-arrow-left" style={{ marginRight: "4px" }} /> Back to Blog
-              </button>
-            </div>
-            <div className="article-container">
-              <h1 className="article-title">{selectedPost.title}</h1>
-              {(selectedPost.date || selectedPost.author) && (
-                <div className="article-meta-line">
-                  {selectedPost.date && <span><i className="far fa-calendar-alt" style={{ marginRight: "6px" }} />{selectedPost.date}</span>}
-                  {selectedPost.date && selectedPost.author && <span style={{ color: "#cbd5e1" }}>|</span>}
-                  {selectedPost.author && <span><i className="far fa-user" style={{ marginRight: "6px" }} />{selectedPost.author}</span>}
-                </div>
-              )}
-              <img
-                src={normalizeImagePath(selectedPost.image)}
-                alt={selectedPost.title}
-                className="article-header-img"
-              />
-              <div className="article-body" dangerouslySetInnerHTML={{ __html: selectedPost.content }} />
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

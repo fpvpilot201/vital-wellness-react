@@ -22,11 +22,11 @@ async function requireAuth() {
   return !!token?.value;
 }
 
-async function getBlogData(): Promise<BlogPost[]> {
+export async function getBlogData(): Promise<BlogPost[]> {
   try {
     const { blobs } = await list({ prefix: BLOGS_BLOB_PATH, limit: 1 });
     if (blobs.length === 0) return [];
-    const response = await fetch(blobs[0].url, { cache: "no-store" });
+    const response = await fetch(blobs[0].url, { cache: "no-store", next: { revalidate: 60 } });
     if (!response.ok) return [];
     return await response.json();
   } catch {
@@ -66,62 +66,54 @@ export async function POST(request: NextRequest) {
   }
 
   if (body.action === "bulk-save") {
-    try {
-      if (!Array.isArray(body.posts)) {
-        return NextResponse.json({ error: "Invalid data" }, { status: 400 });
-      }
-      await saveBlogData(body.posts);
-      return NextResponse.json({ success: true, count: body.posts.length });
-    } catch (err) {
-      console.error("Bulk save error:", err);
-      return NextResponse.json({ error: "Failed to save posts" }, { status: 500 });
+    if (!Array.isArray(body.posts)) {
+      return NextResponse.json({ error: "Invalid posts data" }, { status: 400 });
     }
+    await saveBlogData(body.posts);
+    return NextResponse.json({ success: true, count: body.posts.length });
   }
 
   if (body.action === "delete") {
-    const posts = await getBlogData();
-    const updated = posts.filter((p) => p.id !== body.id);
-    await saveBlogData(updated);
+    let posts = await getBlogData();
+    posts = posts.filter((p) => p.id !== body.id);
+    await saveBlogData(posts);
     return NextResponse.json({ success: true });
   }
 
   if (body.action === "toggle") {
     const posts = await getBlogData();
     const post = posts.find((p) => p.id === body.id);
-    if (post) {
-      post.published = !post.published;
-      await saveBlogData(posts);
-    }
-    return NextResponse.json({ success: true });
+    if (!post) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    post.published = !post.published;
+    await saveBlogData(posts);
+    return NextResponse.json({ success: true, published: post.published });
   }
 
-  if (!body.title || typeof body.title !== "string" || body.title.length > 500) {
-    return NextResponse.json({ error: "Title is required (max 500 chars)" }, { status: 400 });
-  }
+  const { id, title, slug, excerpt, content, image, author, date, published } = body;
+  if (!title) return NextResponse.json({ error: "Title is required" }, { status: 400 });
 
-  const title = body.title.trim().slice(0, 500);
-  const slug = title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+  const finalSlug = slug || title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
   const newPost: BlogPost = {
-    id: body.id || crypto.randomUUID(),
+    id: id || Date.now().toString(),
     title,
-    slug,
-    excerpt: typeof body.excerpt === "string" ? body.excerpt.slice(0, 2000) : "",
-    content: typeof body.content === "string" ? body.content.slice(0, 100000) : "",
-    image: typeof body.image === "string" ? body.image.slice(0, 2000) : "",
-    author: typeof body.author === "string" ? body.author.slice(0, 200) : "iVital Wellness",
-    date: body.date || new Date().toISOString().split("T")[0],
-    published: body.published ?? true,
+    slug: finalSlug,
+    excerpt,
+    content: content || "",
+    image: image || "",
+    author: author || "iVital Wellness",
+    date: date || new Date().toISOString().split("T")[0],
+    published: published !== undefined ? published : true,
   };
 
   const posts = await getBlogData();
-
-  const existingIndex = posts.findIndex((p) => p.id === newPost.id);
-  if (existingIndex >= 0) {
-    posts[existingIndex] = newPost;
+  if (id) {
+    const idx = posts.findIndex((p) => p.id === id);
+    if (idx >= 0) {
+      posts[idx] = newPost;
+    } else {
+      posts.push(newPost);
+    }
   } else {
     posts.unshift(newPost);
   }
@@ -133,4 +125,16 @@ export async function POST(request: NextRequest) {
     console.error("Blog save error:", err);
     return NextResponse.json({ error: "Failed to save post" }, { status: 500 });
   }
+}
+
+export function normalizeImagePath(imagePath: string): string {
+  if (!imagePath) return "/photos/oak.webp";
+  if (imagePath.startsWith("http")) return imagePath;
+  if (imagePath.startsWith("/")) return imagePath;
+  if (imagePath.includes("/photos/")) {
+    const parts = imagePath.split("/photos/");
+    return `/photos/${parts[parts.length - 1]}`;
+  }
+  if (imagePath.startsWith("photos/")) return `/${imagePath}`;
+  return `/photos/${imagePath}`;
 }
