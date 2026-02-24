@@ -9,8 +9,9 @@ export async function GET() {
             allowOverwrite: true,
         });
         return NextResponse.json({ success: true, url });
-    } catch (error: any) {
-        return NextResponse.json({ success: false, error: error.message, stack: error.stack }, { status: 500 });
+    } catch (error: unknown) {
+        const err = error as Error;
+        return NextResponse.json({ success: false, error: err.message, stack: err.stack }, { status: 500 });
     }
 }
 export const dynamic = "force-dynamic";

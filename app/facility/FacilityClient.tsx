@@ -69,18 +69,11 @@ const gallerySections: GallerySection[] = [
 export default function FacilityClient() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [allImages, setAllImages] = useState<string[]>([]);
 
   // Flatten all images into a single array for lightbox navigation
-  useEffect(() => {
-    const images: string[] = [];
-    gallerySections.forEach((section) => {
-      section.images.forEach((img) => {
-        images.push(`/photos/${img}`);
-      });
-    });
-    setAllImages(images);
-  }, []);
+  const allImages = gallerySections.flatMap((section) =>
+    section.images.map((img) => `/photos/${img}`)
+  );
 
   const openLightbox = (imagePath: string) => {
     const index = allImages.indexOf(imagePath);

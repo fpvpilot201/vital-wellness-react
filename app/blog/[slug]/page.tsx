@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getBlogData, normalizeImagePath } from "../../api/blogs/route";
 import Link from "next/link";
@@ -10,15 +10,14 @@ type Props = {
 
 // Next.js dynamic metadata generation (executed on the server)
 export async function generateMetadata(
-    { params }: Props,
-    parent: ResolvingMetadata
+    { params }: Props
 ): Promise<Metadata> {
     const resolvedParams = await params;
     const slug = resolvedParams.slug;
     const posts = await getBlogData();
 
     // Find the post by slug, or fallback to finding by ID
-    const post = posts.find((p: any) => p.slug === slug || p.id === slug);
+    const post = posts.find((p: { slug?: string; id: string }) => p.slug === slug || p.id === slug);
 
     if (!post) {
         return {
@@ -69,7 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
     const posts = await getBlogData();
 
     // Find the post by slug, or fallback to ID
-    const post = posts.find((p: any) => p.slug === slug || p.id === slug);
+    const post = posts.find((p: { slug?: string; id: string }) => p.slug === slug || p.id === slug);
 
     if (!post) {
         notFound();

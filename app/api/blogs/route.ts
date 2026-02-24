@@ -45,7 +45,8 @@ export async function getBlogData(): Promise<BlogPost[]> {
     const data = JSON.parse(fileContents);
 
     // Map old format to new format
-    return (data.blogPosts || []).map((p: any) => ({
+    interface OldBlogPost { id?: string | number; title?: string; excerpt?: string; content?: string; image?: string; author?: string; date?: string; }
+    return (data.blogPosts || []).map((p: OldBlogPost) => ({
       id: p.id ? p.id.toString() : Date.now().toString(),
       title: p.title || "",
       slug: p.title ? p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") : "",

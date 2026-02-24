@@ -18,6 +18,7 @@ export default function Accessibility() {
     if (fs) {
       const val = parseInt(fs);
       html.style.fontSize = val + "%";
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFontSize(val);
     }
     const hc = localStorage.getItem("highContrast") === "true";
@@ -28,6 +29,7 @@ export default function Accessibility() {
     if (gs) html.classList.add("grayscale");
     if (lu) html.classList.add("links-underlined");
     if (rf) html.classList.add("readable-font");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setActiveStates({ highContrast: hc, grayscale: gs, linksUnderlined: lu, readableFont: rf });
   }, []);
 

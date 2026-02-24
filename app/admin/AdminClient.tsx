@@ -259,7 +259,8 @@ export default function AdminClient() {
                     const res = await fetch("/blog.json");
                     const data = await res.json();
                     if (data.blogPosts && data.blogPosts.length > 0) {
-                      const posts = data.blogPosts.map((p: any) => ({
+                      interface OldBlogPost { id: string | number; title: string; excerpt?: string; content: string; image: string; author?: string; date?: string; }
+                      const posts = data.blogPosts.map((p: OldBlogPost) => ({
                         id: p.id.toString(),
                         title: p.title,
                         slug: p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
@@ -280,7 +281,7 @@ export default function AdminClient() {
                     } else {
                       alert("No blogs found in blog.json");
                     }
-                  } catch (e) {
+                  } catch {
                     alert("Failed to import blogs.");
                   }
                 }}

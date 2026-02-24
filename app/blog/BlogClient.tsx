@@ -119,11 +119,6 @@ export default function BlogClient() {
       });
   }, []);
 
-  const openArticle = (post: BlogPost) => {
-    setSelectedPost(post);
-    document.body.style.overflow = "hidden";
-  };
-
   const closeArticle = () => {
     setSelectedPost(null);
     document.body.style.overflow = "";

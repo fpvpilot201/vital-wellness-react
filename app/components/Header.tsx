@@ -1,21 +1,23 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function Header() {
   const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
   const [menuOpen, setMenuOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
   const [expandedSub, setExpandedSub] = useState<string | null>(null);
   const navRef = useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setMenuOpen(false);
     setExpandedItem(null);
     setExpandedSub(null);
-  }, [pathname]);
+  }
 
   const spawnRipple = useCallback((e: React.MouseEvent) => {
     const target = e.currentTarget as HTMLElement;
