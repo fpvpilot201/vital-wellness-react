@@ -116,6 +116,7 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
         <link rel="canonical" href="https://ivital-wellness-react.vercel.app/" />
+        <meta name="google-site-verification" content="otS9vpjBuvt4t4EyVzqflxFTDwQ08sJtyV2AkDneiIA" />
       </head>
       <body>
         <Script id="ga-setup" strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-RD6W1RGFS8" />
