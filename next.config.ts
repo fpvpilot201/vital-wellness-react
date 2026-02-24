@@ -18,18 +18,23 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/treatments/alcohol-addiction/',
-        destination: '/alcohol-rehab',
-        permanent: true,
-      },
-      {
         source: '/treatments/drug-addiction',
         destination: '/drug-rehab',
         permanent: true,
       },
       {
-        source: '/treatments/drug-addiction/',
-        destination: '/drug-rehab',
+        source: '/detox/drug-detox-santa-clarita',
+        destination: '/drug-detox',
+        permanent: true,
+      },
+      {
+        source: '/detox/alcohol-detox-santa-clarita',
+        destination: '/medical-alcohol-detox',
+        permanent: true,
+      },
+      {
+        source: '/residential-treatment',
+        destination: '/programs',
         permanent: true,
       }
     ];
