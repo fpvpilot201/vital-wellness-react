@@ -247,9 +247,47 @@ export default function AdminClient() {
             </div>
             <h2>No posts yet</h2>
             <p>Start writing your first blog post to share with the world.</p>
-            <button className="btn-new-post-lg" onClick={openNewPost}>
-              <i className="fas fa-plus" /> Create Your First Post
-            </button>
+            <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+              <button className="btn-new-post-lg" onClick={openNewPost}>
+                <i className="fas fa-plus" /> Create Your First Post
+              </button>
+              <button
+                className="btn-new-post-lg"
+                style={{ backgroundColor: "#4a5568" }}
+                onClick={async () => {
+                  try {
+                    const res = await fetch("/blog.json");
+                    const data = await res.json();
+                    if (data.blogPosts && data.blogPosts.length > 0) {
+                      const posts = data.blogPosts.map((p: any) => ({
+                        id: p.id.toString(),
+                        title: p.title,
+                        slug: p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+                        excerpt: p.excerpt || "",
+                        content: p.content,
+                        image: p.image,
+                        author: p.author || "iVital Wellness",
+                        date: p.date || new Date().toISOString().split("T")[0],
+                        published: true,
+                      }));
+                      await fetch("/api/blogs", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ action: "bulk-save", posts }),
+                      });
+                      loadPosts();
+                      alert("Blogs imported successfully!");
+                    } else {
+                      alert("No blogs found in blog.json");
+                    }
+                  } catch (e) {
+                    alert("Failed to import blogs.");
+                  }
+                }}
+              >
+                <i className="fas fa-file-import" /> Import Old Blogs
+              </button>
+            </div>
           </div>
         ) : (
           <>
