@@ -46,8 +46,10 @@ export default function Header() {
     });
   };
 
-  const toggleDropdown = (idx: number, e: React.MouseEvent) => {
-    e.preventDefault();
+  const toggleDropdown = (idx: number, e: React.MouseEvent, hasLink: boolean = false) => {
+    if (!hasLink || window.innerWidth <= 1024) {
+      e.preventDefault();
+    }
     setExpandedSub(null);
     setExpandedItem((prev) => (prev === idx ? null : idx));
   };
@@ -126,7 +128,7 @@ export default function Header() {
 
               {/* Treatment Programs */}
               <li className={expandedItem === 2 ? "expanded" : ""}>
-                <a href="#" onClick={(e) => toggleDropdown(2, e)} onMouseDown={spawnRipple}>Treatment Programs</a>
+                <a href="/treatments" onClick={(e) => toggleDropdown(2, e, true)} onMouseDown={spawnRipple}>Treatment Programs</a>
                 <div className={`dropdown-content${expandedItem === 2 ? " expanded" : ""}`}>
                   <div className={`dropdown-submenu${expandedSub === "detox" ? " expanded" : ""}`}>
                     <a href="#" className="submenu-trigger" onClick={(e) => toggleSubmenu("detox", e)}>Detox</a>
