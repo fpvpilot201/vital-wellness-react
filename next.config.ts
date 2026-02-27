@@ -15,10 +15,12 @@ const nextConfig: NextConfig = {
       // === Previously-indexed new URLs → current canonical pages ===
       { source: '/contact', destination: '/contact-us', permanent: true },
       { source: '/contact/', destination: '/contact-us', permanent: true },
-      { source: '/programs', destination: '/treatments', permanent: true },
-      { source: '/programs/', destination: '/treatments', permanent: true },
-      { source: '/residential-treatment', destination: '/treatments', permanent: true },
-      { source: '/residential-treatment/', destination: '/treatments', permanent: true },
+      { source: '/programs', destination: '/', permanent: true },
+      { source: '/programs/', destination: '/', permanent: true },
+      { source: '/residential-treatment', destination: '/', permanent: true },
+      { source: '/residential-treatment/', destination: '/', permanent: true },
+      { source: '/treatments', destination: '/', permanent: true },
+      { source: '/treatments/', destination: '/', permanent: true },
 
       { source: '/drug-detox', destination: '/detox/drug-detox-santa-clarita', permanent: true },
       { source: '/drug-detox/', destination: '/detox/drug-detox-santa-clarita', permanent: true },
@@ -42,8 +44,8 @@ const nextConfig: NextConfig = {
       { source: '/supplemental-treatments/', destination: '/detox/supplemental-treatments', permanent: true },
       { source: '/privacy', destination: '/privacy-policy', permanent: true },
       { source: '/privacy/', destination: '/privacy-policy', permanent: true },
-      { source: '/what-we-treat', destination: '/treatments', permanent: true },
-      { source: '/what-we-treat/', destination: '/treatments', permanent: true },
+      { source: '/what-we-treat', destination: '/', permanent: true },
+      { source: '/what-we-treat/', destination: '/', permanent: true },
 
 
       // === /detox (no sub-path) → drug detox ===

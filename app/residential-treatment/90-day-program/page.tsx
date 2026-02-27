@@ -58,10 +58,6 @@ const html = `
             <li><i class="fas fa-check"></i> Long-term aftercare planning and support</li>
         </ul>
     </div>
-    
-    <div class="back-btn-container">
-        <a href="/treatments" class="back-btn">View All Programs</a>
-    </div>
 </div>
 `;
 

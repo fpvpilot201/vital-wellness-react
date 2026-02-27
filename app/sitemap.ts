@@ -27,7 +27,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: "/residential-treatment/alcohol-rehabilitation-santa-clarita", priority: 0.9, changeFrequency: "monthly" as const },
         { path: "/detox/prescription-drug-detox", priority: 0.8, changeFrequency: "monthly" as const },
         { path: "/residential-treatment/prescription-drug-rehabilitation", priority: 0.8, changeFrequency: "monthly" as const },
-        { path: "/treatments", priority: 0.8, changeFrequency: "monthly" as const },
         ...disorders.map((d) => ({
             path: `/treatments/${d.slug}`,
             priority: 0.8,

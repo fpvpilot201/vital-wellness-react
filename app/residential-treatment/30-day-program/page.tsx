@@ -56,10 +56,6 @@ const html = `
             <li><i class="fas fa-check"></i> Aftercare planning and discharge support</li>
         </ul>
     </div>
-    
-    <div class="back-btn-container">
-        <a href="/treatments" class="back-btn">View All Programs</a>
-    </div>
 </div>
 `;
 
