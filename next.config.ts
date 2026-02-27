@@ -15,8 +15,11 @@ const nextConfig: NextConfig = {
       // === Previously-indexed new URLs → current canonical pages ===
       { source: '/contact', destination: '/contact-us', permanent: true },
       { source: '/contact/', destination: '/contact-us', permanent: true },
-      { source: '/programs', destination: '/residential-treatment', permanent: true },
-      { source: '/programs/', destination: '/residential-treatment', permanent: true },
+      { source: '/programs', destination: '/treatments', permanent: true },
+      { source: '/programs/', destination: '/treatments', permanent: true },
+      { source: '/residential-treatment', destination: '/treatments', permanent: true },
+      { source: '/residential-treatment/', destination: '/treatments', permanent: true },
+
       { source: '/drug-detox', destination: '/detox/drug-detox-santa-clarita', permanent: true },
       { source: '/drug-detox/', destination: '/detox/drug-detox-santa-clarita', permanent: true },
       { source: '/medical-alcohol-detox', destination: '/detox/alcohol-detox-santa-clarita', permanent: true },

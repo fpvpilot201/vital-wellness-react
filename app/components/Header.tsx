@@ -10,6 +10,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
   const [expandedSub, setExpandedSub] = useState<string | null>(null);
+  const [expandedSub2, setExpandedSub2] = useState<string | null>(null);
   const navRef = useRef<HTMLUListElement>(null);
 
   if (pathname !== prevPathname) {
@@ -17,6 +18,7 @@ export default function Header() {
     setMenuOpen(false);
     setExpandedItem(null);
     setExpandedSub(null);
+    setExpandedSub2(null);
   }
 
   const spawnRipple = useCallback((e: React.MouseEvent) => {
@@ -37,6 +39,7 @@ export default function Header() {
       if (prev) {
         setExpandedItem(null);
         setExpandedSub(null);
+        setExpandedSub2(null);
       }
       return !prev;
     });
@@ -50,13 +53,21 @@ export default function Header() {
 
   const toggleSubmenu = (key: string, e: React.MouseEvent) => {
     e.preventDefault();
+    setExpandedSub2(null); // Close third level when toggling second level
     setExpandedSub((prev) => (prev === key ? null : key));
+  };
+
+  const toggleSubmenu2 = (key: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpandedSub2((prev) => (prev === key ? null : key));
   };
 
   const closeAll = () => {
     setMenuOpen(false);
     setExpandedItem(null);
     setExpandedSub(null);
+    setExpandedSub2(null);
   };
 
   return (
@@ -127,7 +138,15 @@ export default function Header() {
                       <Link href="/residential-treatment/alcohol-rehabilitation-santa-clarita" onClick={closeAll}>Alcohol Rehabilitation Center Santa Clarita</Link>
                       <Link href="/residential-treatment/drug-rehabilitation-santa-clarita" onClick={closeAll}>Drug Rehabilitation</Link>
                       <Link href="/residential-treatment/prescription-drug-rehabilitation" onClick={closeAll}>Prescription Drug Rehabilitation</Link>
-                      <Link href="/residential-treatment" onClick={closeAll}>Treatment Programs</Link>
+
+                      <div className={`dropdown-submenu${expandedSub2 === "programs" ? " expanded" : ""}`}>
+                        <a href="#" className="submenu-trigger" onClick={(e) => toggleSubmenu2("programs", e)}>Treatment Programs</a>
+                        <div className={`submenu-content${expandedSub2 === "programs" ? " expanded" : ""}`}>
+                          <Link href="/residential-treatment/30-day-program" onClick={closeAll}>30-Day Program</Link>
+                          <Link href="/residential-treatment/60-day-program" onClick={closeAll}>60-Day Program</Link>
+                          <Link href="/residential-treatment/90-day-program" onClick={closeAll}>90-Day Program</Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

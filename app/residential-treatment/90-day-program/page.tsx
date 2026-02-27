@@ -60,7 +60,7 @@ const html = `
     </div>
     
     <div class="back-btn-container">
-        <a href="/residential-treatment" class="back-btn">View All Programs</a>
+        <a href="/treatments" class="back-btn">View All Programs</a>
     </div>
 </div>
 `;
