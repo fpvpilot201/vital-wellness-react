@@ -11,6 +11,7 @@ export default function Header() {
   const [expandedItem, setExpandedItem] = useState<number | null>(null);
   const [expandedSub, setExpandedSub] = useState<string | null>(null);
   const [expandedSub2, setExpandedSub2] = useState<string | null>(null);
+  const [disableHover, setDisableHover] = useState(false);
   const navRef = useRef<HTMLUListElement>(null);
 
   if (pathname !== prevPathname) {
@@ -68,6 +69,9 @@ export default function Header() {
     setExpandedItem(null);
     setExpandedSub(null);
     setExpandedSub2(null);
+    // Temporarily disable hover to fix sticky CSS menus after click
+    setDisableHover(true);
+    setTimeout(() => setDisableHover(false), 300);
   };
 
   return (
@@ -99,7 +103,7 @@ export default function Header() {
           </button>
 
           <nav aria-label="Main navigation">
-            <ul className={`nav-links${menuOpen ? " mobile-active" : ""}`} id="navLinks" ref={navRef}>
+            <ul className={`nav-links${menuOpen ? " mobile-active" : ""}${disableHover ? " disable-hover" : ""}`} id="navLinks" ref={navRef}>
               {/* About Us */}
               <li className={expandedItem === 0 ? "expanded" : ""}>
                 <a href="/about" onClick={(e) => toggleDropdown(0, e)} onMouseDown={spawnRipple}>About Us</a>

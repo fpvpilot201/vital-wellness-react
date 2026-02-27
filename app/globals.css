@@ -1158,3 +1158,10 @@ select:focus-visible {
         font-size: 13px;
     }
 }
+/* Force hide hover menus when a link is clicked */
+.nav-links.disable-hover .dropdown-content,
+.nav-links.disable-hover .submenu-content {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    display: none !important;
+}
