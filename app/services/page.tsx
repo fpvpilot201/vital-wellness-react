@@ -2,16 +2,15 @@ import HtmlPage from "../components/HtmlPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Addiction Treatment Services | iVital Wellness",
-  description:
-    "Medical detox, residential treatment, and dual diagnosis care at iVital Wellness in Santa Clarita, CA. Call (866) 764-5152.",
-  alternates: { canonical: "/services" },
-  openGraph: {
-    title: "Addiction Treatment Services | iVital Wellness",
-    description: "Medical detox, residential treatment, and dual diagnosis care at iVital Wellness in Santa Clarita, CA. Call (866) 764-5152.",
-    url: "/services",
-    images: [{ url: "/photos/iVital-Wellness-House.jpg", width: 1200, height: 630, alt: "iVital Wellness Addiction Treatment Center" }],
-  },
+    title: "Addiction Treatment Services in Santa Clarita | iVital",
+    description: "Medical detox, residential treatment, and dual diagnosis care at iVital Wellness in Santa Clarita, CA. Call +1 888 673 2087.",
+    alternates: { canonical: "/services" },
+    openGraph: {
+        title: "Addiction Treatment Services in Santa Clarita | iVital",
+        description: "Medical detox, residential treatment, and dual diagnosis care at iVital Wellness in Santa Clarita, CA. Call +1 888 673 2087.",
+        url: "/services",
+        images: [{ url: "/photos/iVital-Wellness-House.jpg", width: 1200, height: 630, alt: "iVital Wellness Addiction Treatment Center" }],
+    },
 };
 
 const css = `
@@ -58,29 +57,29 @@ const html = `
             <div class="divider-leaf"><i class="fas fa-leaf"></i></div>
             <p class="section-desc">At iVital Wellness, we provide a full continuum of care. From medically supervised detox to residential treatment and aftercare planning, our programs are designed to heal the mind, body, and spirit.</p>
         </div>
-        <div class="services-grid">
-            <a href="/drug-detox" class="service-card">
-                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Drug Detox"></div>
+        <div className="services-grid">
+            <a href="/detox/drug-detox-santa-clarita" class="service-card">
+                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Medical drug detox program at iVital Wellness addiction treatment center in Santa Clarita CA"></div>
                 <div class="service-card-body"><h3 class="service-card-title">Drug Detox</h3><p class="service-card-desc">Safety and comfort are our priorities. Medically supervised withdrawal management to help you clear toxins and begin recovery.</p><span class="learn-more">Learn More →</span></div>
             </a>
-            <a href="/alcohol-rehab" class="service-card">
-                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alcohol Rehab"></div>
+            <a href="/residential-treatment/alcohol-rehabilitation-santa-clarita" class="service-card">
+                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alcohol rehabilitation treatment at iVital Wellness luxury rehab center in Santa Clarita CA"></div>
                 <div class="service-card-body"><h3 class="service-card-title">Alcohol Rehab</h3><p class="service-card-desc">Overcome alcohol dependency with our specialized rehabilitation programs, featuring individual counseling and group therapy.</p><span class="learn-more">Learn More →</span></div>
             </a>
-            <a href="/treatment-methods" class="service-card">
-                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Treatment Methods"></div>
+            <a href="/detox/treatment-methods" class="service-card">
+                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Evidence-based addiction therapy session at iVital Wellness drug rehab in Santa Clarita"></div>
                 <div class="service-card-body"><h3 class="service-card-title">Treatment Methods</h3><p class="service-card-desc">We utilize a blend of traditional and holistic therapies including CBT, DBT, and mindfulness to treat the whole person.</p><span class="learn-more">Learn More →</span></div>
             </a>
             <a href="/insurance-verification" class="service-card">
-                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Insurance"></div>
+                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Insurance verification for drug and alcohol rehab at iVital Wellness Santa Clarita"></div>
                 <div class="service-card-body"><h3 class="service-card-title">Admissions & Insurance</h3><p class="service-card-desc">We simplify the process. Verify your insurance coverage online and speak with our compassionate admissions team.</p><span class="learn-more">Get Started →</span></div>
             </a>
-            <a href="/facility" class="service-card">
-                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Facility"></div>
+            <a href="/about/facility" class="service-card">
+                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luxury addiction treatment facility at iVital Wellness in Santa Clarita California"></div>
                 <div class="service-card-body"><h3 class="service-card-title">Luxury Facility</h3><p class="service-card-desc">Recover in peace. Explore our state-of-the-art amenities and comfortable accommodations in Santa Clarita.</p><span class="learn-more">View Gallery →</span></div>
             </a>
-            <a href="/contact" class="service-card">
-                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Contact"></div>
+            <a href="/contact-us" class="service-card">
+                <div class="service-card-img"><img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Contact iVital Wellness addiction treatment center in Santa Clarita California"></div>
                 <div class="service-card-body"><h3 class="service-card-title">Contact Us</h3><p class="service-card-desc">You are not alone. Reach out to us 24/7 for confidential support and guidance on your next steps.</p><span class="learn-more">Contact Now →</span></div>
             </a>
         </div>
@@ -89,5 +88,5 @@ const html = `
 `;
 
 export default function ServicesPage() {
-  return <HtmlPage html={html} css={css} />;
+    return <HtmlPage html={html} css={css} />;
 }

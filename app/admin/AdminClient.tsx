@@ -174,7 +174,7 @@ export default function AdminClient() {
         <div className="login-container">
           <form className="login-box" onSubmit={handleLogin}>
             <div className="login-logo">
-              <img src="/photos/Asset-1.svg" alt="iVital Wellness" />
+              <img src="/photos/logo.png" alt="iVital Wellness" />
             </div>
             <h1>Blog Admin</h1>
             <p>Enter your password to manage posts</p>
@@ -200,7 +200,7 @@ export default function AdminClient() {
     <div className="admin-wrapper">
       <div className="admin-topbar">
         <h1>
-          <span className="topbar-icon"><i className="fas fa-pen-nib" /></span>
+          <span className="topbar-icon">✍</span>
           Blog Manager
         </h1>
         <div className="admin-topbar-actions">

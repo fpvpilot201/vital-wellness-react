@@ -2,7 +2,13 @@
 
 import { useState, useRef, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import PhoneInput from "../components/PhoneInput";
+import DatePicker from "../components/DatePicker";
 import "./insurance.css";
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+}
 
 interface UploadState {
   file: File | null;
@@ -55,6 +61,12 @@ export default function InsuranceClient() {
     setSubmitting(true);
 
     const fd = new FormData(e.currentTarget);
+    const email = fd.get("Email")?.toString() || "";
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address (e.g. name@gmail.com)");
+      setSubmitting(false);
+      return;
+    }
     const data: Record<string, string> = {};
     fd.forEach((val, key) => {
       if (key !== "consent") data[key] = val.toString();
@@ -67,7 +79,7 @@ export default function InsuranceClient() {
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formName: "insurance-verification", ...data }),
+        body: JSON.stringify({ formName: "insurance-verification", form_type: "insurance", ...data }),
       });
       router.push("/thank-you");
     } catch {
@@ -81,6 +93,12 @@ export default function InsuranceClient() {
     e.preventDefault();
     setSubmitting(true);
     const fd = new FormData(e.currentTarget);
+    const email = fd.get("Email")?.toString() || "";
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address (e.g. name@gmail.com)");
+      setSubmitting(false);
+      return;
+    }
     const data: Record<string, string> = {};
     fd.forEach((val, key) => {
       if (key !== "consent") data[key] = val.toString();
@@ -89,7 +107,7 @@ export default function InsuranceClient() {
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formName: "insurance-sidebar", ...data }),
+        body: JSON.stringify({ formName: "insurance-sidebar", form_type: "insurance", ...data }),
       });
       router.push("/thank-you");
     } catch {
@@ -201,15 +219,15 @@ export default function InsuranceClient() {
                   <input type="email" name="Email" placeholder="Email Address" required />
                 </div>
                 <div className="form-group">
-                  <input type="tel" name="Phone" placeholder="Phone Number" required />
+                  <PhoneInput name="Phone" placeholder="Phone Number" required />
                 </div>
               </div>
               <div className="form-row-2">
                 <div className="form-group">
-                  <input type="date" name="DateOfBirth" required />
+                  <DatePicker name="DateOfBirth" required />
                 </div>
                 <div className="form-group">
-                  <input type="tel" name="CenterPhone" placeholder="Center Phone (if different)" />
+                  <PhoneInput name="CenterPhone" placeholder="Center Phone" />
                 </div>
               </div>
               <div className="form-row-2">
@@ -261,7 +279,7 @@ export default function InsuranceClient() {
                   <input type="email" name="Email" placeholder="Email Address" required />
                 </div>
                 <div className="form-group">
-                  <input type="tel" name="Phone" placeholder="Phone Number" required />
+                  <PhoneInput name="Phone" placeholder="Phone Number" required />
                 </div>
                 <div className="form-group">
                   <textarea name="Message" placeholder="Tell us about your situation..." style={{ minHeight: 100 }} />

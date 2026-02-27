@@ -32,16 +32,16 @@ const aboutCSS = `
 const aboutHTML = `
 <section class="about-hero">
     <div class="hero-slideshow">
-        <img src="/photos/iVital-Wellness-Out1.jpg" class="hero-slide active" alt="Slide 1">
-        <img src="/photos/iVital-Wellness-Patio3.jpg" class="hero-slide" alt="Slide 2">
-        <img src="/photos/iVital-Wellness-Patio5.jpg" class="hero-slide" alt="Slide 3">
-        <img src="/photos/iVital-Wellness-House.jpg" class="hero-slide" alt="Slide 4">
+        <img src="/photos/iVital-Wellness-Out1.jpg" class="hero-slide active" alt="iVital Wellness addiction treatment facility exterior in Santa Clarita, CA">
+        <img src="/photos/iVital-Wellness-Patio3.jpg" class="hero-slide" alt="Luxury patio at iVital Wellness drug and alcohol rehab center in Santa Clarita">
+        <img src="/photos/iVital-Wellness-Patio5.jpg" class="hero-slide" alt="Serene outdoor grounds at iVital Wellness addiction recovery center Santa Clarita">
+        <img src="/photos/iVital-Wellness-House.jpg" class="hero-slide" alt="iVital Wellness residential addiction treatment facility in Santa Clarita, California">
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1 class="hero-title">Luxury Meets Care</h1>
         <div class="hero-divider">
-            <img src="/photos/leaves-1.svg" alt="Divider" style="height: 40px; width: auto;">
+            <img src="/photos/leaves-1.svg" alt="" style="height: 40px; width: auto;">
         </div>
         <p class="hero-subtitle">Your Exquisite Path to Wellness</p>
     </div>
@@ -98,7 +98,7 @@ const aboutHTML = `
         </div>
         <div class="col-text">
             <h2 class="section-title">At iVital Wellness</h2>
-            <p class="section-body">We are committed to helping you find sobriety, lasting wellness, and a renewed sense of purpose. Call us today at (866) 764-5152 to start your journey towards a healthier, brighter future in an atmosphere of unparalleled luxury and support. Let us help you find your best self and RECLAIM YOUR FUTURE FROM ADDICTION.</p>
+            <p class="section-body">We are committed to helping you find sobriety, lasting wellness, and a renewed sense of purpose. Call us today at +1 888 673 2087 to start your journey towards a healthier, brighter future in an atmosphere of unparalleled luxury and support. Let us help you find your best self and RECLAIM YOUR FUTURE FROM ADDICTION.</p>
         </div>
     </div>
 </div>

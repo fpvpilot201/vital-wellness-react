@@ -140,7 +140,7 @@ export default function BlogClient() {
         <div className="hero-content">
           <h1 className="page-title">Blog</h1>
           <div className="hero-divider">
-            <img src="/photos/leaves-1.svg" alt="Divider" style={{ height: "40px", width: "auto" }} />
+            <img src="/photos/leaves-1.svg" alt="" style={{ height: "40px", width: "auto" }} />
           </div>
           <p className="page-subtitle">Recovery Resources & Wellness Insights</p>
         </div>

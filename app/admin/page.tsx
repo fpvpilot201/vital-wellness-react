@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import AdminClient from "./AdminClient";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Admin - Blog CMS",
+  title: "Admin | iVital Wellness",
   robots: { index: false, follow: false },
 };
 

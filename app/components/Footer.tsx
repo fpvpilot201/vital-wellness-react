@@ -38,7 +38,7 @@ export default function Footer() {
             <div className="footer-logo">
               <img src="/photos/logo.png" alt="iVital Wellness Addiction Treatment Center" width={180} height={54} />
             </div>
-            <p className="footer-desc">© 2025 iVital Wellness. All rights reserved.</p>
+            <p className="footer-desc">© 2026 iVital Wellness. All rights reserved.</p>
             <p className="footer-desc">
               Santa Clarita&apos;s Premier Addiction Treatment Center. Offering Medical Detox,
               Residential Treatment, and Dual Diagnosis care in a luxury setting.
@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
             <div className="contact-item">
               <i className="fas fa-phone-alt" />
-              <a href="tel:18667645152" style={{ color: "inherit", textDecoration: "none" }}>(866) 764-5152</a>
+              <a href="tel:+18886732087" style={{ color: "inherit", textDecoration: "none" }}>+1 888 673 2087</a>
             </div>
             <div className="contact-item">
               <i className="fas fa-envelope" />
@@ -79,18 +79,18 @@ export default function Footer() {
         <div className="footer-bottom">
           <div className="footer-bottom-container">
             <div className="footer-bottom-links">
-              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/privacy-policy">Privacy Policy</Link>
               <span>Terms of Service</span>
               <span>License Number: 190363AP</span>
             </div>
             <div>
-              Website design by <span className="brivity-credit">brivity</span>
+              <img src="/photos/brivity-logo-final.png" alt="Website design by brivity" style={{ height: '60px', width: 'auto', display: 'block' }} />
             </div>
           </div>
         </div>
       </footer>
 
-      <a href="tel:18667645152" className="float-icon icon-phone" aria-label="Call iVital Wellness at (866) 764-5152">
+      <a href="tel:+18886732087" className="float-icon icon-phone" aria-label="Call iVital Wellness at +1 888 673 2087">
         <i className="fas fa-phone" />
       </a>
     </>

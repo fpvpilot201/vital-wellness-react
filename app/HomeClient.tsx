@@ -16,7 +16,7 @@ export default function HomeClient() {
             <span style={{ color: "#a8bfa5" }}>Santa Clarita, CA</span>
           </h1>
           <div className="hero-buttons">
-            <a href="tel:18667645152" className="btn-hero btn-green">
+            <a href="tel:+18886732087" className="btn-hero btn-green">
               <i className="fas fa-phone-alt" /> Get Immediate Help
             </a>
             <Link href="/insurance-verification" className="btn-hero btn-outline">
@@ -101,7 +101,7 @@ export default function HomeClient() {
               giving you the time and space to focus on lasting recovery.
             </p>
           </div>
-          <Link href="/facility" className="btn-room-tour shape-super">
+          <Link href="/about/facility" className="btn-room-tour shape-super">
             <i className="fas fa-arrow-circle-right" /> Room Tour
           </Link>
         </div>
@@ -145,7 +145,7 @@ export default function HomeClient() {
             {
               title: "Advanced, Medically Assisted Detox",
               desc: "Your detox experience starts from your assessment. Our highly skilled Addictionologists will know your condition before arrival. Your medically assisted detox will begin upon your arrival. No waiting, no suffering from withdrawals. Making your health under medical supervision our focus during arrival. Getting you safely and comfortably through detox into recovery makes our advanced medically assisted detox so successful.",
-              link: "/drug-detox",
+              link: "/detox/drug-detox-santa-clarita",
               img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
               alt: "Detox",
               reverse: false,
@@ -153,7 +153,7 @@ export default function HomeClient() {
             {
               title: "Transformational Breakthrough Method",
               desc: "Your individualized treatment program including any co-occurring conditions under this method accurately creates evidence-based programs that include one-on-one therapy sessions, specific group therapies, and holistic treatments for overall health and lasting recovery.",
-              link: "/treatment-methods",
+              link: "/detox/treatment-methods",
               img: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
               alt: "Therapy",
               reverse: true,
@@ -161,7 +161,7 @@ export default function HomeClient() {
             {
               title: "Family Programming",
               desc: "The entire family is affected by addiction; our program is designed to support, guide, and heal your whole family. Helping you or a loved one with a strong support system is fundamental to lasting recovery.",
-              link: "/treatment-methods",
+              link: "/detox/treatment-methods",
               img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
               alt: "Family",
               reverse: false,
@@ -169,7 +169,7 @@ export default function HomeClient() {
             {
               title: "Relapse Prevention Therapy",
               desc: "One of the pillars of our program is designed to help you recognize triggers that may lead to relapse. This program gives you the skills to avoid these triggers. Giving you or a loved one the strength and skill to avoid relapse.",
-              link: "/treatment-methods",
+              link: "/detox/treatment-methods",
               img: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
               alt: "Prevention",
               reverse: true,
@@ -177,7 +177,7 @@ export default function HomeClient() {
             {
               title: "Ongoing Alumni Support",
               desc: "iVital Wellness offers lifelong sobriety support through our ever-expanding alumni support group. This means that you are part of our family and we will always be ready to support you and your sobriety.",
-              link: "/treatment-methods",
+              link: "/detox/treatment-methods",
               img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
               alt: "Alumni",
               reverse: false,

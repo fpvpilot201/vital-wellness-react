@@ -3,6 +3,10 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+}
+
 export default function SidebarForm() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
@@ -12,6 +16,13 @@ export default function SidebarForm() {
     setSubmitting(true);
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form));
+
+    if (!isValidEmail(data.Email?.toString() || "")) {
+      alert("Please enter a valid email address (e.g. name@gmail.com)");
+      setSubmitting(false);
+      return;
+    }
+
     try {
       await fetch("/api/contact", {
         method: "POST",

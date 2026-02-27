@@ -47,13 +47,23 @@ export async function POST(request: NextRequest) {
       sanitized[sanitizeField(key)] = sanitizeField(value);
     }
 
-    const GOOGLE_SHEET_URL = process.env.GOOGLE_SHEET_WEBHOOK_URL;
-    if (!GOOGLE_SHEET_URL) {
-      console.error("GOOGLE_SHEET_WEBHOOK_URL not configured");
+    // Server-side Bot Validation (Honeypot)
+    if (sanitized.website_url) {
+      console.warn(`[BOT PROTECTION] Honeypot triggered from IP: ${ip}`);
+      return NextResponse.json({ error: "Bot detected. Access denied." }, { status: 403 });
+    }
+
+    const isInsurance = body.form_type === 'insurance';
+    const rawWebhookPath = isInsurance
+      ? process.env.INSURANCE_SHEET_WEBHOOK_URL
+      : process.env.GOOGLE_SHEET_WEBHOOK_URL;
+
+    if (!rawWebhookPath) {
+      console.error(`Webhook URL not configured for ${isInsurance ? 'Insurance' : 'Contact'} form`);
       return NextResponse.json({ success: true });
     }
 
-    await fetch(GOOGLE_SHEET_URL, {
+    await fetch(rawWebhookPath, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

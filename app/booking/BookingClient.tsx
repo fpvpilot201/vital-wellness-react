@@ -13,7 +13,7 @@ const html = `<section class="page-hero">
     <div class="hero-watermark"></div>
     <div class="hero-content">
         <h1 class="page-title">Book Your Stay</h1>
-        <img src="/photos/leaves-1.svg" alt="Divider" class="hero-divider" style="height:40px;width:auto;">
+        <img src="/photos/leaves-1.svg" alt="" class="hero-divider" style="height:40px;width:auto;">
         <p class="page-subtitle">Take the First Step Toward Recovery</p>
     </div>
 </section>
@@ -67,10 +67,10 @@ const html = `<section class="page-hero">
     <div style="text-align: center; margin-bottom: 60px;">
         <h3 style="font-family: 'Playfair Display', serif; font-size: 28px; color: #2c3e29; margin-bottom: 20px;">Prefer to Talk?</h3>
         <p style="font-family: 'Lato', sans-serif; font-size: 18px; color: #666; margin-bottom: 20px;">Our admissions team is available 24/7 to answer your questions.</p>
-        <a href="tel:18667645152" style="display: inline-block; padding: 15px 40px; background-color: #556350; color: white; text-decoration: none; border-radius: 5px; font-family: 'Lato', sans-serif; font-size: 18px; font-weight: 500;"><i class="fas fa-phone" style="margin-right: 10px;"></i> Call (866) 764-5152</a>
+        <a href="tel:+18886732087" style="display: inline-block; padding: 15px 40px; background-color: #556350; color: white; text-decoration: none; border-radius: 5px; font-family: 'Lato', sans-serif; font-size: 18px; font-weight: 500;"><i class="fas fa-phone" style="margin-right: 10px;"></i> Call +1 888 673 2087</a>
     </div>
 </div>`;
 
 export default function BookingClient() {
-  return <HtmlPage html={html} css={css} />;
+    return <HtmlPage html={html} css={css} />;
 }

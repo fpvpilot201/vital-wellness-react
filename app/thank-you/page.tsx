@@ -1,10 +1,16 @@
-import type { Metadata } from "next";
 import HtmlPage from "../components/HtmlPage";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Thank You | iVital Wellness",
-  description: "Thank you for contacting iVital Wellness. Our admissions team will reach out to you shortly.",
-  robots: { index: false, follow: false },
+  description: "Thank you for contacting iVital Wellness. Our team will be in touch shortly.",
+  alternates: { canonical: "/thank-you" },
+  openGraph: {
+    title: "Thank You | iVital Wellness",
+    description: "Thank you for contacting iVital Wellness. Our team will be in touch shortly.",
+    url: "/thank-you",
+    images: [{ url: "/photos/iVital-Wellness-House.jpg", width: 1200, height: 630, alt: "iVital Wellness Addiction Treatment Center" }],
+  },
 };
 
 const thankYouCSS = `

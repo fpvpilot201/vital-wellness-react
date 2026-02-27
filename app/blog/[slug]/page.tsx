@@ -1,14 +1,13 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getBlogData, normalizeImagePath } from "../../api/blogs/route";
+import { getBlogData, normalizeImagePath } from "../../lib/blog";
 import Link from "next/link";
-import Script from "next/script";
+import { SITE_URL } from "../../lib/site";
 
 type Props = {
     params: Promise<{ slug: string }>;
 };
 
-// Next.js dynamic metadata generation (executed on the server)
 export async function generateMetadata(
     { params }: Props
 ): Promise<Metadata> {
@@ -16,7 +15,6 @@ export async function generateMetadata(
     const slug = resolvedParams.slug;
     const posts = await getBlogData();
 
-    // Find the post by slug, or fallback to finding by ID
     const post = posts.find((p: { slug?: string; id: string }) => p.slug === slug || p.id === slug);
 
     if (!post) {
@@ -28,18 +26,18 @@ export async function generateMetadata(
     const imageUrl = normalizeImagePath(post.image);
     const fullImageUrl = imageUrl.startsWith("http")
         ? imageUrl
-        : `https://ivital-wellness-react.vercel.app${imageUrl}`;
+        : `${SITE_URL}${imageUrl}`;
 
     return {
         title: `${post.title} | iVital Wellness Blog`,
         description: post.excerpt || `Read ${post.title} from the clinical team at iVital Wellness in Santa Clarita, CA.`,
         alternates: {
-            canonical: `https://ivital-wellness-react.vercel.app/blog/${post.slug || post.id}`,
+            canonical: `${SITE_URL}/blog/${post.slug || post.id}`,
         },
         openGraph: {
             title: post.title,
             description: post.excerpt || "",
-            url: `https://ivital-wellness-react.vercel.app/blog/${post.slug || post.id}`,
+            url: `${SITE_URL}/blog/${post.slug || post.id}`,
             siteName: "iVital Wellness",
             images: [
                 {
@@ -67,7 +65,6 @@ export default async function BlogPostPage({ params }: Props) {
     const slug = resolvedParams.slug;
     const posts = await getBlogData();
 
-    // Find the post by slug, or fallback to ID
     const post = posts.find((p: { slug?: string; id: string }) => p.slug === slug || p.id === slug);
 
     if (!post) {
@@ -76,7 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
 
     const fullImageUrl = normalizeImagePath(post.image).startsWith("http")
         ? normalizeImagePath(post.image)
-        : `https://ivital-wellness-react.vercel.app${normalizeImagePath(post.image)}`;
+        : `${SITE_URL}${normalizeImagePath(post.image)}`;
 
     const jsonLd = {
         "@context": "https://schema.org",
@@ -87,7 +84,7 @@ export default async function BlogPostPage({ params }: Props) {
         publisher: {
             "@type": "Organization",
             name: "iVital Wellness",
-            logo: { "@type": "ImageObject", url: "https://ivital-wellness-react.vercel.app/photos/logo.png" }
+            logo: { "@type": "ImageObject", url: `${SITE_URL}/photos/logo.png` }
         },
         datePublished: post.date || new Date().toISOString().split("T")[0],
         description: post.excerpt || "",
@@ -95,8 +92,7 @@ export default async function BlogPostPage({ params }: Props) {
 
     return (
         <>
-            <Script
-                id={`schema-${post.id}`}
+            <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
@@ -105,10 +101,10 @@ export default async function BlogPostPage({ params }: Props) {
         This is the premium reading aesthetic applied as a standalone page 
         rather than a popup modal. All CSS classes will match the global stylesheet.
       */}
-            <div style={{ backgroundColor: "#fff", minHeight: "100vh", paddingTop: "120px" }}>
+            <div style={{ backgroundColor: "#fff", minHeight: "100vh", paddingTop: "180px" }}>
                 <Link href="/blog" className="back-btn" style={{
                     position: "absolute",
-                    top: "140px",
+                    top: "200px",
                     left: "max(20px, calc(50vw - 480px))",
                     backgroundColor: "#fff",
                     color: "#333",

@@ -30,6 +30,12 @@ export async function POST(request: NextRequest) {
     UPLOADS.set(ip, { count: 1, windowStart: Date.now() });
   }
 
+  // Check for blob token
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    console.error("BLOB_READ_WRITE_TOKEN is not set");
+    return NextResponse.json({ error: "Storage not configured. Please contact support." }, { status: 500 });
+  }
+
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File;
@@ -43,7 +49,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
+      return NextResponse.json({ error: `Invalid file type: ${file.type}` }, { status: 400 });
     }
 
     const safeName = sanitizeFilename(file.name);
@@ -54,7 +60,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ url: blob.url });
   } catch (error) {
-    console.error("Insurance card upload error:", error);
-    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    const msg = error instanceof Error ? error.message : "Unknown error";
+    console.error("Insurance card upload error:", msg);
+    return NextResponse.json({ error: `Upload failed: ${msg}` }, { status: 500 });
   }
 }

@@ -64,7 +64,7 @@ export default function Header() {
       <div className="top-bar">
         <div className="container-limit">
           <span>15668 Live Oak Springs Canyon Rd</span>
-          <a href="tel:18667645152">Speak with specialist 24/7 – 1(866) 764-5152</a>
+          <a href="tel:+18886732087">Speak with specialist 24/7 – +1 888 673 2087</a>
         </div>
       </div>
 
@@ -94,9 +94,9 @@ export default function Header() {
                 <a href="/about" onClick={(e) => toggleDropdown(0, e)} onMouseDown={spawnRipple}>About Us</a>
                 <div className={`dropdown-content${expandedItem === 0 ? " expanded" : ""}`}>
                   <Link href="/about" onClick={closeAll}>About Us</Link>
-                  <Link href="/treatment-methods" onClick={closeAll}>Treatment Methods</Link>
-                  <Link href="/supplemental-treatments" onClick={closeAll}>Supplemental Treatments</Link>
-                  <Link href="/facility" onClick={closeAll}>Facility</Link>
+                  <Link href="/detox/treatment-methods" onClick={closeAll}>Treatment Methods</Link>
+                  <Link href="/detox/supplemental-treatments" onClick={closeAll}>Supplemental Treatments</Link>
+                  <Link href="/about/facility" onClick={closeAll}>Facility</Link>
                 </div>
               </li>
 
@@ -104,7 +104,7 @@ export default function Header() {
               <li className={expandedItem === 1 ? "expanded" : ""}>
                 <a href="#" onClick={(e) => toggleDropdown(1, e)} onMouseDown={spawnRipple}>Admissions</a>
                 <div className={`dropdown-content${expandedItem === 1 ? " expanded" : ""}`}>
-                  <Link href="/admissions-information" onClick={closeAll}>Admission Information</Link>
+                  <Link href="/admissions" onClick={closeAll}>Admission Information</Link>
                   <Link href="/insurance-verification" onClick={closeAll}>Insurance Verification</Link>
                 </div>
               </li>
@@ -116,18 +116,18 @@ export default function Header() {
                   <div className={`dropdown-submenu${expandedSub === "detox" ? " expanded" : ""}`}>
                     <a href="#" className="submenu-trigger" onClick={(e) => toggleSubmenu("detox", e)}>Detox</a>
                     <div className={`submenu-content${expandedSub === "detox" ? " expanded" : ""}`}>
-                      <Link href="/drug-detox" onClick={closeAll}>Drug Detox</Link>
-                      <Link href="/prescription-drug-detox" onClick={closeAll}>Prescription Drug Detox</Link>
-                      <Link href="/medical-alcohol-detox" onClick={closeAll}>Medical Alcohol Detox Santa Clarita</Link>
+                      <Link href="/detox/drug-detox-santa-clarita" onClick={closeAll}>Drug Detox</Link>
+                      <Link href="/detox/prescription-drug-detox" onClick={closeAll}>Prescription Drug Detox</Link>
+                      <Link href="/detox/alcohol-detox-santa-clarita" onClick={closeAll}>Medical Alcohol Detox Santa Clarita</Link>
                     </div>
                   </div>
                   <div className={`dropdown-submenu${expandedSub === "residential" ? " expanded" : ""}`}>
                     <a href="#" className="submenu-trigger" onClick={(e) => toggleSubmenu("residential", e)}>Residential Treatment</a>
                     <div className={`submenu-content${expandedSub === "residential" ? " expanded" : ""}`}>
-                      <Link href="/alcohol-rehab" onClick={closeAll}>Alcohol Rehabilitation Center Santa Clarita</Link>
-                      <Link href="/drug-rehab" onClick={closeAll}>Drug Rehabilitation</Link>
-                      <Link href="/prescription-rehab" onClick={closeAll}>Prescription Drug Rehabilitation</Link>
-                      <Link href="/programs" onClick={closeAll}>Treatment Programs</Link>
+                      <Link href="/residential-treatment/alcohol-rehabilitation-santa-clarita" onClick={closeAll}>Alcohol Rehabilitation Center Santa Clarita</Link>
+                      <Link href="/residential-treatment/drug-rehabilitation-santa-clarita" onClick={closeAll}>Drug Rehabilitation</Link>
+                      <Link href="/residential-treatment/prescription-drug-rehabilitation" onClick={closeAll}>Prescription Drug Rehabilitation</Link>
+                      <Link href="/residential-treatment" onClick={closeAll}>Treatment Programs</Link>
                     </div>
                   </div>
                 </div>
@@ -137,22 +137,22 @@ export default function Header() {
               <li className={expandedItem === 3 ? "expanded" : ""}>
                 <a href="#" onClick={(e) => toggleDropdown(3, e)} onMouseDown={spawnRipple}>What We Treat</a>
                 <div className={`dropdown-content${expandedItem === 3 ? " expanded" : ""}`}>
-                  <Link href="/what-we-treat#alcohol" onClick={closeAll}>Alcohol Addiction</Link>
-                  <Link href="/what-we-treat#cocaine" onClick={closeAll}>Cocaine Addiction</Link>
-                  <Link href="/what-we-treat#marijuana" onClick={closeAll}>Marijuana Addiction</Link>
-                  <Link href="/what-we-treat#prescription" onClick={closeAll}>Prescription Drug Addiction</Link>
-                  <Link href="/what-we-treat#heroin" onClick={closeAll}>Heroin Addiction</Link>
-                  <Link href="/what-we-treat#benzo" onClick={closeAll}>Benzodiazepine Addiction</Link>
-                  <Link href="/what-we-treat#meth" onClick={closeAll}>Meth Addiction</Link>
-                  <Link href="/what-we-treat#opioid" onClick={closeAll}>Opioid Addiction</Link>
-                  <Link href="/what-we-treat#xanax" onClick={closeAll}>Xanax Addiction</Link>
-                  <Link href="/what-we-treat#co-occurring" onClick={closeAll}>Co-occurring Disorders</Link>
-                  <Link href="/what-we-treat#hallucinogen" onClick={closeAll}>Hallucinogen Addiction</Link>
+                  <Link href="/treatments/alcohol-addiction" onClick={closeAll}>Alcohol Addiction</Link>
+                  <Link href="/treatments/cocaine-addiction" onClick={closeAll}>Cocaine Addiction</Link>
+                  <Link href="/treatments/marijuana-addiction" onClick={closeAll}>Marijuana Addiction</Link>
+                  <Link href="/treatments/prescription-drug-addiction" onClick={closeAll}>Prescription Drug Addiction</Link>
+                  <Link href="/treatments/heroin-addiction" onClick={closeAll}>Heroin Addiction</Link>
+                  <Link href="/treatments/benzodiazepine-addiction" onClick={closeAll}>Benzodiazepine Addiction</Link>
+                  <Link href="/treatments/meth-addiction" onClick={closeAll}>Meth Addiction</Link>
+                  <Link href="/treatments/opioid-addiction" onClick={closeAll}>Opioid Addiction</Link>
+                  <Link href="/treatments/xanax-addiction" onClick={closeAll}>Xanax Addiction</Link>
+                  <Link href="/treatments/co-occurring-disorders" onClick={closeAll}>Co-occurring Disorders</Link>
+                  <Link href="/treatments/hallucinogen-addiction" onClick={closeAll}>Hallucinogen Addiction</Link>
                 </div>
               </li>
 
               <li>
-                <Link href="/contact" onClick={closeAll} onMouseDown={spawnRipple}>Contact Us</Link>
+                <Link href="/contact-us" onClick={closeAll} onMouseDown={spawnRipple}>Contact Us</Link>
               </li>
               <li>
                 <Link href="/blog" onClick={closeAll} onMouseDown={spawnRipple}>Blog</Link>

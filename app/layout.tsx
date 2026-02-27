@@ -4,9 +4,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Accessibility from "./components/Accessibility";
 import ScrollReveal from "./components/ScrollReveal";
+import ScrollToTop from "./components/ScrollToTop";
 import JsonLd from "./components/JsonLd";
-
-const SITE_URL = "https://ivitalwellness.com";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "./lib/site";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -16,20 +16,56 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  verification: {
-    google: "GYWD36nzRWOa51TIlhIx2hj-UcaOwf_U-YYAr7DAzXU",
-  },
   title: {
-    default: "iVital Wellness - Addiction Treatment Center | Drug & Alcohol Rehab Santa Clarita",
+    default: "iVital Wellness Addiction Treatment Center in Santa Clarita",
     template: "%s | iVital Wellness",
   },
-  description: "iVital Wellness is a premier addiction treatment center in Santa Clarita, CA offering medical detox, residential treatment, dual diagnosis care, and luxury rehab programs. Call (866) 764-5152.",
-  keywords: ["addiction treatment center", "drug rehab Santa Clarita", "medical detox", "residential treatment", "iVital Wellness"],
+  description:
+    "iVital Wellness Alcohol & Drug Rehab Center in Santa Clarita, CA: Premier addiction treatment and recovery services: Get dedicated support you or your loved one",
+  keywords: [
+    "addiction treatment center",
+    "drug rehab Santa Clarita",
+    "alcohol rehab Santa Clarita",
+    "medical detox",
+    "residential treatment",
+    "dual diagnosis",
+    "luxury rehab Los Angeles",
+    "iVital Wellness",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+  },
   alternates: {
-    canonical: SITE_URL,
+    canonical: SITE_URL + "/",
   },
   formatDetection: { telephone: true, email: true, address: true },
   icons: { icon: "/photos/fav.webp", apple: "/photos/fav.webp" },
+  openGraph: {
+    locale: "en_US",
+    siteName: "iVital Wellness - Addiction Treatment Center in Santa Clarita - Los Angeles Luxury Rehab Center",
+    type: "website",
+    title: "iVital Wellness Addiction Treatment Center in Santa Clarita",
+    description:
+      "iVital Wellness Alcohol & Drug Rehab Center in Santa Clarita, CA: Premier addiction treatment and recovery services: Get dedicated support you or your loved one",
+    url: SITE_URL,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "iVital Wellness Addiction Treatment Center",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "iVital Wellness Addiction Treatment Center in Santa Clarita",
+    description:
+      "iVital Wellness Alcohol & Drug Rehab Center in Santa Clarita, CA: Premier addiction treatment and recovery services: Get dedicated support you or your loved one",
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function RootLayout({
@@ -40,44 +76,51 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Native Injection: Forces trackers into raw View Source HTML */}
-        <script dangerouslySetInnerHTML={{
-          __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-RD6W1RGFS8');
-        `}} />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RD6W1RGFS8" />
-
-        <script dangerouslySetInnerHTML={{
-          __html: `
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-TKPJH55B');
-        `}} />
-
-        <script dangerouslySetInnerHTML={{
-          __html: `
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-MM5D885J');
-        `}} />
+        <meta
+          name="google-site-verification"
+          content="GYWD36nzRWOa51TIlhIx2hj-UcaOwf_U-YYAr7DAzXU"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-WHP863C6QY"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-WHP863C6QY');
+            `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(m,e,t,r,i,k,a){
+                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                m[i].l=1*new Date();
+                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+              })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105729891', 'ym');
+              ym(105729891, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+            `,
+          }}
+        />
       </head>
       <body className="antialiased" suppressHydrationWarning>
         <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKPJH55B" height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
+          <div>
+            <img src="https://mc.yandex.ru/watch/105729891" style={{ position: "absolute", left: "-9999px" }} alt="" />
+          </div>
         </noscript>
-        <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MM5D885J" height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
-        </noscript>
-
-        <script async src="https://cdn.userway.org/widget.js" data-account="wtfVmFNygS" />
-
+        <ScrollToTop />
         <JsonLd />
         <Header />
         <main id="main-content">{children}</main>
