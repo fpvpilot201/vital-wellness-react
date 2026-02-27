@@ -41,7 +41,7 @@ const html = `
 </header>
 <div class="programs-container">
     <div class="program-card">
-        <h2 class="program-title">30-Day Treatment Program</h2>
+        <h2 class="program-title"><a href="/residential-treatment/30-day-program" style="color: inherit; text-decoration: none;">30-Day Treatment Program</a></h2>
         <p class="program-text">Our 30-day residential treatment program provides intensive care for individuals who need focused support to begin their recovery journey. This program is ideal for those with less severe addictions or who have completed detox elsewhere and are ready for structured treatment.</p>
         <p class="program-text">During the 30-day program, clients participate in daily individual and group therapy sessions, attend educational workshops, and begin developing relapse prevention skills. The program includes comprehensive assessment, personalized treatment planning, and discharge planning to ensure continuity of care.</p>
         <ul class="program-features">
@@ -52,10 +52,11 @@ const html = `
             <li><i class="fas fa-check"></i> Educational workshops and skill-building</li>
             <li><i class="fas fa-check"></i> Aftercare planning and discharge support</li>
         </ul>
+        <div style="margin-top: 20px;"><a href="/residential-treatment/30-day-program" style="color: #6a7c64; font-weight: bold; text-decoration: underline;">Read More about our 30-Day Program</a></div>
     </div>
     
     <div class="program-card">
-        <h2 class="program-title">60-Day Treatment Program</h2>
+        <h2 class="program-title"><a href="/residential-treatment/60-day-program" style="color: inherit; text-decoration: none;">60-Day Treatment Program</a></h2>
         <p class="program-text">Our 60-day residential treatment program offers extended care for individuals who need more time to address the underlying causes of their addiction and develop strong recovery skills. This program is recommended for those with moderate to severe addictions or co-occurring mental health conditions.</p>
         <p class="program-text">The extended duration allows for deeper therapeutic work, more comprehensive treatment of co-occurring disorders, and stronger development of relapse prevention strategies. Clients have more time to practice new skills, build healthy relationships, and establish routines that support long-term recovery.</p>
         <ul class="program-features">
@@ -67,10 +68,11 @@ const html = `
             <li><i class="fas fa-check"></i> Extended family involvement and support</li>
             <li><i class="fas fa-check"></i> Comprehensive aftercare coordination</li>
         </ul>
+        <div style="margin-top: 20px;"><a href="/residential-treatment/60-day-program" style="color: #6a7c64; font-weight: bold; text-decoration: underline;">Read More about our 60-Day Program</a></div>
     </div>
     
     <div class="program-card">
-        <h2 class="program-title">90-Day Treatment Program</h2>
+        <h2 class="program-title"><a href="/residential-treatment/90-day-program" style="color: inherit; text-decoration: none;">90-Day Treatment Program</a></h2>
         <p class="program-text">Our 90-day residential treatment program provides the most comprehensive care for individuals with severe addictions, multiple relapses, or complex co-occurring disorders. This extended program allows for thorough treatment of all aspects of addiction and mental health, providing the strongest foundation for long-term recovery.</p>
         <p class="program-text">The 90-day program includes intensive therapy, comprehensive dual diagnosis treatment, extensive skill-building, and deep work on trauma and underlying issues. Clients have ample time to practice new behaviors, build strong support networks, and develop confidence in their ability to maintain sobriety.</p>
         <ul class="program-features">
@@ -83,6 +85,7 @@ const html = `
             <li><i class="fas fa-check"></i> Comprehensive relapse prevention program</li>
             <li><i class="fas fa-check"></i> Long-term aftercare planning and support</li>
         </ul>
+        <div style="margin-top: 20px;"><a href="/residential-treatment/90-day-program" style="color: #6a7c64; font-weight: bold; text-decoration: underline;">Read More about our 90-Day Program</a></div>
     </div>
     
     <div class="program-card">

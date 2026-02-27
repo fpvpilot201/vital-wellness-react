@@ -42,13 +42,6 @@ const nextConfig: NextConfig = {
       { source: '/what-we-treat', destination: '/treatments', permanent: true },
       { source: '/what-we-treat/', destination: '/treatments', permanent: true },
 
-      // === Program length pages → residential treatment ===
-      { source: '/residential-treatment/30-day-program', destination: '/residential-treatment', permanent: true },
-      { source: '/residential-treatment/30-day-program/', destination: '/residential-treatment', permanent: true },
-      { source: '/residential-treatment/60-day-program', destination: '/residential-treatment', permanent: true },
-      { source: '/residential-treatment/60-day-program/', destination: '/residential-treatment', permanent: true },
-      { source: '/residential-treatment/90-day-program', destination: '/residential-treatment', permanent: true },
-      { source: '/residential-treatment/90-day-program/', destination: '/residential-treatment', permanent: true },
 
       // === /detox (no sub-path) → drug detox ===
       { source: '/detox', destination: '/detox/drug-detox-santa-clarita', permanent: true },
